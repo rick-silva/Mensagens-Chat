@@ -1,0 +1,22 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* .div-btn{
+    display: flex !important;
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.btn-copy{
+    width: 100px;
+    height: 25px;
+} */
+
+.card{
+    width: 30rem !important;
+}
