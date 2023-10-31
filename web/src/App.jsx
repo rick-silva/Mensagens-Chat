@@ -1,19 +1,14 @@
-import Mensagem from "./assets/components/Mensagem/mensagem"
-
-import MensagemOS from "./assets/components/Mensagem/mensagemOs"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Home } from './pages/Home'
+import { OS } from './pages/OS'
 
 function App() {
 
   return (
-    <div className="w-full h-screen" >
-        <div className="flex justify-center align-center flex-col h-32">
-          <h1 className=" text-center text-5xl my-5">Atendimento Padrão CHAT</h1>
-        </div>
-        <Mensagem />
-        <MensagemOS />
-        <details>Tv BOX</details>
-
-    </div>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/OS' element={<OS />} />
+    </Routes>
   )
 }
 
