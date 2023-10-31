@@ -1,59 +1,23 @@
-import Fastify from 'fastify'
-import { PrismaClient } from '@prisma/client'
-import { randomUUID } from 'node:crypto'
+const { fastify } = require('fastify')
 
-const prisma = new PrismaClient()
+const createMessage = require('./route/createMessage')
+const getAllMessage = require('./route/getAllMessage')
+const updateMessage = require('./route/updateMessage')
+const deleteMessage = require('./route/deleteMessage')
+const GetMessageById = require('./route/getMessageById')
 
-const app = Fastify({
+const app = fastify({
   logger: true
 })
 
-app.post('/message', async (request, response) => {
-  const { title, content } = request.body
+app.register(createMessage)
+app.register(getAllMessage)
+app.register(updateMessage)
+app.register(deleteMessage)
+app.register(GetMessageById)
 
-  await prisma.message.create({
-    data: {
-      id: randomUUID(),
-      title,
-      content
-    }
-  })
 
-  return response.status(201).send('create')
-})
 
-app.get('/message', async (request, response) => {
-  const message = await prisma.message.findMany()
-
-  return { message }
-})
-
-app.put('/message/:id', async (request, response) => {
-  const { title, content } = request.body
-  const { id } = request.params
-
-  await prisma.message.update({
-    where: {
-      id
-    },
-    data: {
-      title,
-      content
-    }
-  })
-
-  return response.status(204).send()
-})
-
-app.delete('/message/:id', async (request, response) => {
-  const { id } = request.params
-
-  await prisma.message.delete({
-    where: {
-      id
-    }
-  })
-})
 
 
 app.listen({

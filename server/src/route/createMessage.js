@@ -1,12 +1,11 @@
-import { prisma } from "../lib/prisma"
-import { randomUUID } from 'node:crypto'
-import { prisma } from "../lib/prisma"
+const prisma = require('../lib/prisma')
+const { randomUUID } = require('node:crypto')
 
-export async function CreateMessage() {
-    app.post('/message', async (request, response) => {
+async function CreateMessage(app) {
+    app.post('/message', async (request, reply) => {
         const { title, content } = request.body
 
-        await prisma.message.create({
+        const message = await prisma.message.create({
             data: {
                 id: randomUUID(),
                 title,
@@ -14,6 +13,8 @@ export async function CreateMessage() {
             }
         })
 
-        return response.status(201).send('create')
+        return reply.status(201).send('sucess')
     })
 }
+
+module.exports = CreateMessage
