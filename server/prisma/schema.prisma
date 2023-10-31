@@ -11,12 +11,16 @@ datasource db {
 }
 
 model Message {
-  id      String @id @default(uuid())
-  title   String @unique
-  content String
+  id         String    @id @default(uuid())
+  title      String    @unique
+  content    String
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
 }
 
 model Category {
   id    String @id @default(uuid())
   title String
+
+  message Message[]
 }

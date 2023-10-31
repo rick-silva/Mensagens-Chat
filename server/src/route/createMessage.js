@@ -3,13 +3,18 @@ const { randomUUID } = require('node:crypto')
 
 async function CreateMessage(app) {
     app.post('/message', async (request, reply) => {
-        const { title, content } = request.body
+        const { title, content, id } = request.body
 
         const message = await prisma.message.create({
             data: {
                 id: randomUUID(),
                 title,
-                content
+                content,
+                Category: {
+                    connect: {
+                        id
+                    }
+                }
             }
         })
 
