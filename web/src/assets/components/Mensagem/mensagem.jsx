@@ -57,7 +57,7 @@ const Mensagem = () => {
             {
                 // Verificar grid para o numero de cartões não quebrar a página : https://www.youtube.com/watch?v=dqMae44pEVk
                 cards.map(card => (
-                    <div className="flex justify-center w-96 items-center flex-col h-96 bg-slate-700 text-white text-justify rounded-3xl">
+                    <div className="flex justify-center w-[400px] items-center flex-col h-96 bg-slate-700 text-white text-justify rounded-3xl">
                         <div className="m-5 p-3">
                             <h2 id="title" className="text-2xl text-center my-4" ><strong>{card.title}</strong></h2>
                             <p className={card.id}>{card.content}</p>

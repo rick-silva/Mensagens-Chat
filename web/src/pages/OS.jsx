@@ -1,5 +1,9 @@
+import MensagemOS from "../assets/components/Mensagem/mensagemOs";
+
 export function OS() {
     return (
-        <h1>OS</h1>
+        <div className="w-full h-full flex items-center justify-center">
+            <MensagemOS />
+        </div>
     )
 }
