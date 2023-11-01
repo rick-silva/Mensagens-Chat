@@ -4,9 +4,14 @@
   "description": "",
   "type": "commonjs",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "start": "prisma generate && node api/index.js",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
