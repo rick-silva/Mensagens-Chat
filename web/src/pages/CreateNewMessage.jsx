@@ -7,16 +7,22 @@ export function CreateNewMessage() {
     const [content, setContent] = useState('')
     const [idCategory, setIdCategory] = useState('')
     const [category, setCategory] = useState([])
+    const [message, setMessage] = useState('')
 
     async function handleCreateMessage(event) {
 
         event.preventDefault()
 
-        await api.post('/message', {
-            title,
-            content,
-            id: idCategory
-        })
+        try {
+            await api.post('/message', {
+                title,
+                content,
+                id: idCategory
+            })
+            setMessage('Cadastrado com sucesso')
+        } catch (err) {
+            setMessage('Algo de errado aconteceu')
+        }
     }
 
     useEffect(() => {
@@ -51,6 +57,7 @@ export function CreateNewMessage() {
                     })}
                 </select>
                 <button type="submit" className="bg-zinc-800 rounded p-4 text-white hover:bg-zinc-700 transition-colors">Salvar</button>
+                {!message ? '' : <span className="text-black text-xl font-semibold">{message}</span>}
             </form>
         </div>
     )
