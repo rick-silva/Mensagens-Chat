@@ -1,8 +1,22 @@
 import React from "react";
 
 import copy from "copy-to-clipboard";
+import { Toast } from "../Notification/Toast";
+import { useState } from "react";
 
 const Mensagem = (props) => {
+
+    const [message, setMessage] = useState(false)
+
+    const toast = <Toast error={message} />
+
+    function handleOpenToast() {
+        setMessage(true)
+        setTimeout(() => {
+            setMessage(false)
+        }, 3000);
+    }
+
 
     return (
         <div className="w-full h-full grid grid-cols-3 grid-flow-row px-8 py-10 gap-4">
@@ -15,12 +29,13 @@ const Mensagem = (props) => {
                 </div>
                 <div className="flex justify-center items-center my-3">
                     <button className="bg-teal-500 w-40 h-9 rounded-2xl m-auto flex justify-center items-center" onClick={() => {
-                        copy(props.content)
-                        alert('Texto copiado')
+                        copy(props.content),
+                            handleOpenToast()
                     }}>
                         <i className="material-icons left">attach_file</i> Copiar Texto</button>
                 </div>
             </div>
+            {toast}
         </div>
 
     )
