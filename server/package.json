@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch src/server.js",
+    "dev": "node api/server.js",
     "start": "prisma generate && node api/index.js",
     "postinstall": "prisma generate"
   },

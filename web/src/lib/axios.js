@@ -1,5 +1,7 @@
 import axios from "axios";
 
+console.log(import.meta.env.VITE_API_URL)
+
 export const api = axios.create({
-    baseURL: 'https://chatserver-sooty.vercel.app/'
+    baseURL: import.meta.env.VITE_API_URL
 })
